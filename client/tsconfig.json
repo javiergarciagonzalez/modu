@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./built",
+        "allowJs": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "typeRoots": ["node_modules/@types"],
+        "target": "es5",
+        "sourceMap": true,
+        "inlineSources": true,
+        "sourceRoot": "/"
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

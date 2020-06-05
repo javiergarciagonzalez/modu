@@ -28,8 +28,7 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         port: 8080,
-        host: 'localhost',
-        hot: true
+        host: 'localhost'
     },
     module: {
         rules: [{
@@ -43,6 +42,9 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-react']
+                },
                 include: [
                     /src/
                 ],
@@ -75,8 +77,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          inject: true,
-          template: path.resolve(__dirname, 'public/index.html'),
+            template: path.resolve(__dirname, 'public/index.html'),
+            inject: 'body',
+            publicPath
         }),
-      ],
+    ],
 };
