@@ -1,0 +1,29 @@
+{
+  "name": "modu-client",
+  "version": "1.0.0",
+  "description": "React + Redux + Typescript",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "webpack-dev-server"
+  },
+  "keywords": [
+    "reactjs"
+  ],
+  "author": "Javier Garcia Gonzalez <Javier@garciagon.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.1.0",
+    "file-loader": "^6.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.9.5"
+  }
+}
