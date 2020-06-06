@@ -1,0 +1,22 @@
+{
+  "name": "modu-server",
+  "version": "1.0.0",
+  "description": "Express + graphql + mongoDB",
+  "main": "server/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/src/index.js",
+    "develop": "BUILD_ENV=development concurrently --names \"BE, FE\" \"npm start\" \"cd client && npm run develop\""
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Javier Garcia Gonzalez <javier@garciagon.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.4",
+    "nodemon": "^2.0.4"
+  }
+}

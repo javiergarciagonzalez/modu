@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.ENV_BUILD === 'production';
 const envMode = isProduction ? 'production' : 'development';
@@ -7,6 +6,12 @@ const contentBase = path.resolve(__dirname, './dist');
 const defaultEntries = [
     path.resolve(__dirname, 'src/index.tsx'),
 ];
+
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: './../public/index.html'
+});
 
 const publicPath = '/'
 
@@ -28,7 +33,12 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         port: 8080,
-        host: 'localhost'
+        disableHostCheck: true,
+        host: 'localhost',
+        proxy: {
+            '/*/': 'http://localhost:3000'
+        }, 
+        host: '0.0.0.0'
     },
     module: {
         rules: [{
@@ -74,12 +84,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'public/index.html'),
-            inject: 'body',
-            publicPath
-        }),
-    ],
+    }, 
+    plugins: [htmlPlugin]
 };

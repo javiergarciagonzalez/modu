@@ -10,8 +10,9 @@
   "keywords": [
     "reactjs"
   ],
+  "proxy": "http://localhost:3000",
   "author": "Javier Garcia Gonzalez <Javier@garciagon.com>",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
