@@ -37,7 +37,7 @@ module.exports = {
         host: 'localhost',
         proxy: {
             '/*/': 'http://localhost:3000'
-        }, 
+        },
         host: '0.0.0.0'
     },
     module: {
@@ -84,6 +84,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
-    }, 
+    },
     plugins: [htmlPlugin]
 };
