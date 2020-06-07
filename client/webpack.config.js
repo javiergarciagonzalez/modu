@@ -1,16 +1,12 @@
+require('dotenv').config({ path: '../.env' });
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.ENV_BUILD === 'production';
 const envMode = isProduction ? 'production' : 'development';
 const contentBase = path.resolve(__dirname, './dist');
 const defaultEntries = [path.resolve(__dirname, 'src/index.tsx')];
-
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: './../public/index.html'
-});
-
+const port = process.env.CLIENT_PORT;
 const publicPath = '/';
 
 module.exports = {
@@ -30,12 +26,7 @@ module.exports = {
     devtool: isProduction ? 'source-map' : 'eval-source-map',
     devServer: {
         contentBase: './dist',
-        port: 8080,
-        disableHostCheck: true,
-        proxy: {
-            '/*/': 'http://localhost:3000'
-        },
-        host: '0.0.0.0'
+        port
     },
     module: {
         rules: [
@@ -83,5 +74,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
     },
-    plugins: [htmlPlugin]
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './../public/index.html'
+        })
+    ]
 };

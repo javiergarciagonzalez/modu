@@ -15,5 +15,6 @@ export default function App() {
 
         fetchdata();
     }, []);
+
     return <p>Heyp I'm Mobu - frontend = {foo}</p>;
 }
