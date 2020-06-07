@@ -3,17 +3,15 @@ const path = require('path');
 const isProduction = process.env.ENV_BUILD === 'production';
 const envMode = isProduction ? 'production' : 'development';
 const contentBase = path.resolve(__dirname, './dist');
-const defaultEntries = [
-    path.resolve(__dirname, 'src/index.tsx'),
-];
+const defaultEntries = [path.resolve(__dirname, 'src/index.tsx')];
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: './../public/index.html'
+    template: './../public/index.html'
 });
 
-const publicPath = '/'
+const publicPath = '/';
 
 module.exports = {
     mode: envMode,
@@ -34,19 +32,17 @@ module.exports = {
         contentBase: './dist',
         port: 8080,
         disableHostCheck: true,
-        host: 'localhost',
         proxy: {
             '/*/': 'http://localhost:3000'
         },
         host: '0.0.0.0'
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.(ts|tsx)?$/,
                 loader: 'awesome-typescript-loader',
-                include: [
-                    /src/
-                ],
+                include: [/src/],
                 exclude: [/node_modules/]
             },
             {
@@ -55,30 +51,32 @@ module.exports = {
                 options: {
                     presets: ['@babel/preset-react']
                 },
-                include: [
-                    /src/
-                ],
+                include: [/src/],
                 exclude: [/node_modules/]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts'
+                        }
                     }
-                }]
+                ]
             },
             {
                 test: /\.(webp|png|svg)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'img'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img'
+                        }
                     }
-                }]
+                ]
             }
         ]
     },

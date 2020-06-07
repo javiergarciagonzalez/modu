@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-export default function App () {
-
+export default function App() {
     const [foo, setFoo] = useState('');
 
     useEffect(() => {
-        let bar = 'loading...';
+        const bar = 'loading...';
         async function fetchdata() {
             // Foo it's just a test for testing API requests
             setFoo(bar);
@@ -16,5 +15,5 @@ export default function App () {
 
         fetchdata();
     }, []);
-return <p>Hey, I'm Mobu - frontend = {foo}</p>
+    return <p>Heyp I'm Mobu - frontend = {foo}</p>;
 }

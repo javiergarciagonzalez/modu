@@ -1,22 +1,45 @@
 {
-  "name": "modu-server",
-  "version": "1.0.0",
-  "description": "Express + graphql + mongoDB",
-  "main": "server/src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/src/index.js",
-    "develop": "BUILD_ENV=development concurrently --names \"BE, FE\" \"npm start\" \"cd client && npm run develop\""
-  },
-  "keywords": [
-    "nodejs"
-  ],
-  "author": "Javier Garcia Gonzalez <javier@garciagon.com>",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "concurrently": "^5.2.0",
-    "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.4",
-    "nodemon": "^2.0.4"
-  }
+    "name": "modu-server",
+    "version": "1.0.0",
+    "description": "Express + graphql + mongoDB",
+    "main": "server/src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server/src/index.js",
+        "develop": "BUILD_ENV=development concurrently --names \"BE, FE\" \"npm start\" \"cd client && npm run develop\"",
+        "lint": "eslint --format table './**/*.ts' './**/*.js' './**/*.tsx'",
+        "lint:fix": "eslint --format table './**/*.ts' './**/*.js' --fix",
+        "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css)\""
+    },
+    "keywords": ["nodejs"],
+    "author": "Javier Garcia Gonzalez <javier@garciagon.com>",
+    "license": "UNLICENSED",
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint && npm run format"
+        }
+    },
+    "dependencies": {
+        "concurrently": "^5.2.0",
+        "express": "^4.17.1",
+        "http-proxy-middleware": "^1.0.4",
+        "nodemon": "^2.0.4"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^3.1.0",
+        "@typescript-eslint/parser": "^3.1.0",
+        "eslint": "^7.2.0",
+        "eslint-config-airbnb": "^18.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.20.0",
+        "eslint-plugin-standard": "^4.0.1",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.9",
+        "typescript": "^3.9.5"
+    }
 }
